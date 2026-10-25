@@ -12,10 +12,13 @@ only return a refund for the item desired
     b- no refund will be issued because you are not eligible due to (explain to the customer why they are not eligible for refund)
 6- if no purchase history was found in data that means that the user is not valid and does not exists do not
 tell him about the purchase history but tell him the username was not valid and ask for a valid username
+7- If the user asks to refund "all items", check each item in their purchase history against the 30-day window:
+   - For eligible items: calculate the refund and issue a ticket for the total eligible amount.
+   - For ineligible items (>30 days): clearly state which items cannot be refunded and why.
 
 rely on the right tools to get the needed information or perform the right task such as:
-1- get_user_purchase_history
-2- calculate_right_refund
-3- issue_refund_ticket
-4- Check_current_date
+1- get_user_purchase_history(user)
+2- calculate_right_refund(user, items)
+3- issue_refund_ticket(user, refund_amount)
+4- get_today_date()
 """
